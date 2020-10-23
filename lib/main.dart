@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:card_view/product_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -61,7 +62,12 @@ class MenuCard extends StatelessWidget {
       color: Colors.white,
       child: InkWell(
         onTap: () {
-          _showDialog(context, menu);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductList()
+            ),
+          );
         },
         child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -79,27 +85,5 @@ class MenuCard extends StatelessWidget {
       ),
     );
   }
-
-  void _showDialog(BuildContext context, Menu menu) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: new Text("Keterangan"),
-            content: new Text("Ini menu " + menu.title),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text("Close"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        }
-    );
-  }
-
-
 }
 
